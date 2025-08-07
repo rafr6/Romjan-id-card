@@ -65,7 +65,6 @@
 
     .card.front .header .company-name .en {
       font-size: 12px;
-      margin-left: 0px;
     }
 
     .card.front .photo {
@@ -104,13 +103,13 @@
     .card.front .info .position {
       font-size: 14px;
       margin: 3px 0;
-      color: blue; /* পদবি নীল রঙে */
+      color: blue;
     }
 
     .card.front .info .details {
       text-align: left;
       margin-top: 8px;
-      font-weight: bold; /* বাকি তথ্য বোল্ড */
+      font-weight: bold;
     }
 
     .card.front .info .details div {
@@ -137,27 +136,25 @@
     .card.back .header {
       background: #3399ff;
       color: white;
-      height: 60px;
+      height: 70px;
       display: flex;
       align-items: center;
       padding: 0 10px;
-      font-size: 13px;
-      font-weight: bold;
     }
 
     .card.back .header img.logo {
-      height: 50px;
-      margin-right: 10px;
+      height: 60px; /* লোগো বড় করা */
+      margin-right: 15px;
     }
 
     .card.back .header .company-text {
       text-align: left;
-      margin-left: 10px; /* চায়না নাম একটু ডান দিকে আনা হয়েছে */
     }
 
     .card.back .header .company-text .cn {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: bold;
+      margin-bottom: 3px;
     }
 
     .card.back .header .company-text .en {
@@ -166,44 +163,27 @@
 
     .card.back .content {
       text-align: center;
-      padding: 10px 20px;
+      padding: 15px 20px;
     }
 
     .card.back .address {
       font-size: 13px;
-      margin-top: 10px;
+      margin-top: 5px;
     }
 
     .card.back .qr {
-      margin-top: 20px; /* QR কোড নিচে নামানো হয়েছে */
-      position: relative;
+      margin-top: 20px;
     }
 
     .card.back .qr img {
-      height: 100px;
-      opacity: 1;
-    }
-
-    .card.back .qr::before {
-      content: "";
-      background-image: url('company-logo.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      opacity: 0.1;
-      position: absolute;
-      top: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 80px;
-      z-index: 1;
+      height: 110px;
     }
 
     .card.back .signatures {
       display: flex;
       justify-content: space-between;
       padding: 0 20px;
-      margin-top: 40px; /* সিগনেচার উপরে আনা হয়েছে */
+      margin-top: 25px; /* সাইনেচার নিচের হেডারের উপরে */
       font-size: 12px;
     }
 
@@ -292,4 +272,4 @@
 
   </div>
 </body>
-            </html>
+</html>
