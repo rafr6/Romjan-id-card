@@ -38,32 +38,34 @@
       border-bottom-left-radius: 60% 40%;
       border-bottom-right-radius: 60% 40%;
       color: white;
-      text-align: center;
-      padding-top: 10px;
       position: relative;
+      padding: 10px;
     }
 
-    .card.front .header img.logo {
-      height: 50px;
-      margin-bottom: 5px;
+    .card.front .header .logo-cn-box {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      text-align: left;
     }
 
-    .card.front .header .company-text {
+    .card.front .header .logo-cn-box img {
+      height: 45px;
+    }
+
+    .card.front .header .logo-cn-box .cn {
+      font-size: 14px;
+      font-weight: bold;
       margin-top: 5px;
     }
 
-    .card.front .header .company-text .cn {
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .card.front .header .company-text .en {
+    .card.front .header .logo-cn-box .en {
       font-size: 12px;
     }
 
     .card.front .photo {
       position: absolute;
-      top: 135px; /* moved up */
+      top: 130px;
       left: 50%;
       transform: translateX(-50%);
       width: 100px;
@@ -216,8 +218,8 @@
     <!-- FRONT -->
     <div class="card front">
       <div class="header">
-        <img class="logo" src="company-logo.png" alt="Logo" />
-        <div class="company-text">
+        <div class="logo-cn-box">
+          <img src="company-logo.png" alt="Logo" />
           <div class="cn">中国中铁六局集团有限公司</div>
           <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
         </div>
@@ -278,6 +280,7 @@
 
       <div class="footer"></div>
     </div>
+
   </div>
 </body>
   </html>
