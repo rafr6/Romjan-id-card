@@ -24,11 +24,13 @@
       font-size: 14px;
     }
 
-    .card-container {
+    .page {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 30px 0;
+      min-height: 100vh;
+      background: #f2f2f2;
+      page-break-after: always; /* পিডিএফে নতুন পেইজ শুরু হবে */
     }
 
     .card {
@@ -39,7 +41,6 @@
       overflow: hidden;
       background: #fff;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      margin-bottom: 30px;
       position: relative;
     }
 
@@ -219,79 +220,81 @@
 
   <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
 
-  <div id="card-area" class="card-container">
-
-    <!-- FRONT -->
-    <div class="card front">
-      <div class="header">
-        <img class="logo" src="company-logo.png" alt="Logo" />
-        <div class="company-name">
-          <div class="cn">中 国 中 铁 六 局 集 团 有 限 公 司</div>
-          <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
+  <div id="card-area">
+    <!-- FRONT PAGE -->
+    <div class="page">
+      <div class="card front">
+        <div class="header">
+          <img class="logo" src="company-logo.png" alt="Logo" />
+          <div class="company-name">
+            <div class="cn">中 国 中 铁 六 局 集 团 有 限 公 司</div>
+            <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
+          </div>
         </div>
-      </div>
 
-      <div class="photo">
-        <img src="photo.jpg" alt="Photo" />
-      </div>
-
-      <div class="info">
-        <div class="name">MD OBAIDUL HASAN</div>
-        <div class="position">Wheel Loaders (Operator)</div>
-        <div class="details">
-          <div><strong>ID:</strong> 110-0027W-0407</div>
-          <div><strong>DOB:</strong> 10-11-2002</div>
-          <div><strong>Phone:</strong> 01832395343</div>
-          <div><strong>NID:</strong> 8712923831</div>
-          <div><strong>Blood:</strong> O+</div>
-          <div><strong>Join:</strong> 20-February-2020</div>
+        <div class="photo">
+          <img src="photo.jpg" alt="Photo" />
         </div>
-      </div>
 
-      <div class="email">obaidulhasan381@gmail.com</div>
+        <div class="info">
+          <div class="name">MD OBAIDUL HASAN</div>
+          <div class="position">Wheel Loaders (Operator)</div>
+          <div class="details">
+            <div><strong>ID:</strong> 110-0027W-0407</div>
+            <div><strong>DOB:</strong> 10-11-2002</div>
+            <div><strong>Phone:</strong> 01832395343</div>
+            <div><strong>NID:</strong> 8712923831</div>
+            <div><strong>Blood:</strong> O+</div>
+            <div><strong>Join:</strong> 20-February-2020</div>
+          </div>
+        </div>
+
+        <div class="email">obaidulhasan381@gmail.com</div>
+      </div>
     </div>
 
-    <!-- BACK -->
-    <div class="card back">
-      <div class="header">
-        <img class="logo" src="company-logo.png" alt="Logo" />
-        <div class="company-text">
-          <div class="cn">中 国 中 铁 六 局 集 团 有 限 公 司</div>
-          <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
+    <!-- BACK PAGE -->
+    <div class="page">
+      <div class="card back">
+        <div class="header">
+          <img class="logo" src="company-logo.png" alt="Logo" />
+          <div class="company-text">
+            <div class="cn">中 国 中 铁 六 局 集 团 有 限 公 司</div>
+            <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
+          </div>
         </div>
+
+        <div class="content">
+          <div class="address">
+            Address:<br />
+            China Project, Polia, Bhanga,<br />
+            Faridpur, Dhaka, Bangladesh.
+          </div>
+
+          <div class="qr">
+            <img src="qrcode.png" alt="QR Code" />
+          </div>
+        </div>
+
+        <div class="signatures">
+          <div>
+            ___________<br />
+            <span>Authority Signature</span>
+          </div>
+          <div>
+            ___________<br />
+            <span>Operator Signature</span>
+          </div>
+        </div>
+
+        <div class="footer"></div>
       </div>
-
-      <div class="content">
-        <div class="address">
-          Address:<br />
-          China Project, Polia, Bhanga,<br />
-          Faridpur, Dhaka, Bangladesh.
-        </div>
-
-        <div class="qr">
-          <img src="qrcode.png" alt="QR Code" />
-        </div>
-      </div>
-
-      <div class="signatures">
-        <div>
-          ___________<br />
-          <span>Authority Signature</span>
-        </div>
-        <div>
-          ___________<br />
-          <span>Operator Signature</span>
-        </div>
-      </div>
-
-      <div class="footer"></div>
     </div>
-
   </div>
 
   <script>
     function downloadPDF() {
-      document.querySelector(".download-btn").style.display = "none"; // Hide button
+      document.querySelector(".download-btn").style.display = "none";
       const element = document.getElementById("card-area");
       const opt = {
         margin:       0,
@@ -301,10 +304,10 @@
         jsPDF:        { unit: 'px', format: 'a4', orientation: 'portrait' }
       };
       html2pdf().set(opt).from(element).save().then(() => {
-        document.querySelector(".download-btn").style.display = "block"; // Show again
+        document.querySelector(".download-btn").style.display = "block";
       });
     }
   </script>
 
 </body>
-</html>
+  </html>
