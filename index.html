@@ -1,47 +1,30 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-</head>
-
-<body>
-  
-</body>
-
-</html><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ID Card</title>
+  <title>ID Card Design</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      padding: 20px;
-      display: flex;
-      gap: 30px;
-      justify-content: center;
-      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
     }
 
     .card-front, .card-back {
       width: 350px;
       height: 500px;
-      background: #fff;
-      border-radius: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
       overflow: hidden;
+      margin: 20px auto;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
       position: relative;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      border: 2px solid #007ad9;
     }
 
-    /* ---------- FRONT ---------- */
+    /* FRONT PAGE */
     .card-front .blue-header {
-      background: #007ad9;
+      background: #3399ff;
       height: 200px;
       border-bottom-left-radius: 80% 40%;
       border-bottom-right-radius: 80% 40%;
@@ -50,24 +33,19 @@
       position: relative;
     }
 
-    .card-front .header-row {
+    .card-front .blue-header .logo-row {
       display: flex;
       align-items: center;
     }
 
     .card-front .blue-header img {
-      height: 45px;
+      height: 40px;
       margin-right: 10px;
     }
 
-    .card-front .blue-header .title {
-      font-size: 13px;
-      line-height: 1.2;
-    }
-
-    .card-front .blue-header .title div:first-child {
-      font-weight: bold;
-      font-size: 14px;
+    .card-front .blue-header .company-names {
+      font-size: 12px;
+      line-height: 1.3;
     }
 
     .card-front .photo {
@@ -77,7 +55,7 @@
       overflow: hidden;
       border: 4px solid white;
       position: absolute;
-      top: 130px;
+      top: 90px;
       left: 50%;
       transform: translateX(-50%);
       background: white;
@@ -91,112 +69,106 @@
     }
 
     .card-front .info {
-      margin-top: 70px;
-      padding: 10px 20px;
+      padding: 100px 20px 10px 20px;
       font-size: 14px;
+      position: relative;
+      z-index: 1;
     }
 
-    .info .name {
+    .card-front .info .name {
       text-align: center;
       font-size: 16px;
       font-weight: bold;
       margin-bottom: 5px;
     }
 
-    .info .position {
+    .card-front .info .position {
       text-align: center;
       font-size: 14px;
-      color: #007ad9;
       margin-bottom: 10px;
     }
 
-    .info div {
-      margin-bottom: 6px;
+    .card-front .info .details div {
+      margin-bottom: 3px;
     }
 
-    .info strong {
-      width: 80px;
+    .card-front .info strong {
       display: inline-block;
+      width: 90px;
     }
 
-    .watermark-front {
+    .card-front .email {
+      background: #3399ff;
+      color: white;
+      text-align: center;
+      padding: 8px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      font-size: 13px;
+    }
+
+    .card-front .watermark {
       position: absolute;
       top: 230px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 48px;
-      color: #007ad9;
-      opacity: 0.05;
-      font-weight: bold;
-      pointer-events: none;
-      user-select: none;
+      opacity: 0.07;
+      font-size: 60px;
       z-index: 0;
     }
 
-    .email {
-      position: absolute;
-      bottom: 0;
-      background: #007ad9;
-      color: white;
-      width: 100%;
+    /* BACK PAGE */
+    .card-back .blue-header {
+      background: #3399ff;
+      height: 50px;
       text-align: center;
-      padding: 10px;
+      color: white;
+      padding-top: 10px;
       font-size: 13px;
     }
 
-    /* ---------- BACK ---------- */
-    .card-back .header {
+    .card-back .logo-row {
       display: flex;
       align-items: center;
-      padding: 10px 15px;
-      background: #007ad9;
-      color: white;
+      padding: 10px;
     }
 
-    .card-back .header img {
-      height: 45px;
+    .card-back .logo-row img {
+      height: 35px;
       margin-right: 10px;
     }
 
-    .card-back .header .text {
-      font-size: 13px;
-      line-height: 1.2;
-    }
-
-    .card-back .header .text div:first-child {
-      font-weight: bold;
-      font-size: 14px;
+    .card-back .company-names {
+      font-size: 12px;
+      line-height: 1.3;
     }
 
     .card-back .address {
-      padding: 20px;
-      font-size: 14px;
+      padding: 10px 20px;
+      font-size: 13px;
       text-align: center;
     }
 
     .card-back .qr {
       text-align: center;
-      position: relative;
       margin-top: 10px;
+      position: relative;
     }
 
     .card-back .qr img {
       width: 100px;
       height: 100px;
-      border: 1px solid #ccc;
     }
 
-    .card-back .watermark-back {
+    .card-back .qr .watermark {
       position: absolute;
-      top: 25px;
+      top: 30px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 45px;
-      color: #007ad9;
       opacity: 0.07;
-      font-weight: bold;
-      pointer-events: none;
-      user-select: none;
+      font-size: 50px;
+      z-index: 0;
     }
 
     .card-back .signatures {
@@ -204,89 +176,85 @@
       justify-content: space-between;
       padding: 0 20px;
       position: absolute;
-      bottom: 35px;
+      bottom: 60px;
       width: 100%;
       font-size: 12px;
     }
 
-    .signatures div {
-      border-top: 1px solid #007ad9;
-      padding-top: 5px;
+    .card-back .signatures div {
       text-align: center;
-      width: 45%;
     }
-
-    .card-back .footer-bar {
-      position: absolute;
-      bottom: 0;
-      background: #005ba3;
-      width: 100%;
-      height: 25px;
-    }
-
   </style>
 </head>
 <body>
 
-<!-- FRONT SIDE -->
+<!-- FRONT PAGE -->
 <div class="card-front">
   <div class="blue-header">
-    <div class="header-row">
+    <div class="logo-row">
       <img src="company-logo.png" alt="Logo">
-      <div class="title">
-        <div>中国中铁六局集团有限公司</div>
-        <div>CREC Padma Bridge Rail Link Project Division 3</div>
+      <div class="company-names">
+        中国中铁六局集团有限公司<br/>
+        CREC Padma Bridge Rail Link Project Division 3
       </div>
-    </div>
-    <div class="photo">
-      <img src="photo.jpg" alt="Card Holder Photo">
     </div>
   </div>
 
-  <div class="watermark-front">CREC</div>
+  <div class="photo">
+    <img src="photo.jpg" alt="Photo">
+  </div>
 
   <div class="info">
     <div class="name">MD OBAIDUL HASAN</div>
     <div class="position">Wheel Loaders (Operator)</div>
-    <div><strong>ID:</strong> 110-0027W-0407</div>
-    <div><strong>DOB:</strong> 10-11-2002</div>
-    <div><strong>Phone:</strong> 01832395343</div>
-    <div><strong>NID:</strong> 8712923831</div>
-    <div><strong>Blood:</strong> O+</div>
-    <div><strong>Join:</strong> 20-February-2020</div>
+    <div class="details">
+      <div><strong>ID:</strong> 110-0027W-0407</div>
+      <div><strong>DOB:</strong> 10-11-2002</div>
+      <div><strong>Phone:</strong> 01832395343</div>
+      <div><strong>NID:</strong> 8712923831</div>
+      <div><strong>Blood:</strong> O+</div>
+      <div><strong>Join:</strong> 20-February-2020</div>
+    </div>
   </div>
 
+  <div class="watermark">CREC</div>
   <div class="email">obaidulhasan381@gmail.com</div>
 </div>
 
-<!-- BACK SIDE -->
+<!-- BACK PAGE -->
 <div class="card-back">
-  <div class="header">
+  <div class="logo-row">
     <img src="company-logo.png" alt="Logo">
-    <div class="text">
-      <div>中国中铁六局集团有限公司</div>
-      <div>CREC Padma Bridge Rail Link Project Division 3</div>
+    <div class="company-names">
+      中国中铁六局集团有限公司<br/>
+      CREC Padma Bridge Rail Link Project Division 3
     </div>
   </div>
 
   <div class="address">
-    Address:<br>
-    China Project, Polia, Bhanga,<br>
+    Address:<br/>
+    China Project, Polia, Bhanga,<br/>
     Faridpur, Dhaka, Bangladesh.
   </div>
 
   <div class="qr">
-    <div class="watermark-back">CREC</div>
+    <div class="watermark">CREC</div>
     <img src="qrcode.png" alt="QR Code">
   </div>
 
   <div class="signatures">
-    <div>Authority Signature</div>
-    <div>Operator Signature</div>
+    <div>
+      ___________<br>
+      Authority Signature
+    </div>
+    <div>
+      ___________<br>
+      Operator Signature
+    </div>
   </div>
 
-  <div class="footer-bar"></div>
+  <div class="blue-header"></div>
 </div>
 
 </body>
-</html>
+             </html>
