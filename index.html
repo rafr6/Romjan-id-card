@@ -39,26 +39,34 @@
       border-bottom-right-radius: 60% 40%;
       color: white;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      flex-direction: column;
+      padding: 0 15px;
       position: relative;
     }
 
     .card.front .header img.logo {
-      height: 50px;
-      margin-bottom: 5px;
+      height: 60px;
     }
 
-    .card.front .header .company-name {
+    .card.front .header .company-text {
+      flex-grow: 1;
+      text-align: center;
+      margin-left: -60px;
+    }
+
+    .card.front .header .company-text .cn {
       font-size: 14px;
       font-weight: bold;
-      text-align: center;
+    }
+
+    .card.front .header .company-text .en {
+      font-size: 12px;
     }
 
     .card.front .photo {
       position: absolute;
-      top: 100px;
+      top: 125px;
       left: 50%;
       transform: translateX(-50%);
       width: 100px;
@@ -124,23 +132,32 @@
       height: 60px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      padding: 0 10px;
       font-size: 13px;
       font-weight: bold;
+    }
+
+    .card.back .header img.logo {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .card.back .header .company-text {
+      text-align: left;
+    }
+
+    .card.back .header .company-text .cn {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .card.back .header .company-text .en {
+      font-size: 12px;
     }
 
     .card.back .content {
       text-align: center;
       padding: 10px 20px;
-    }
-
-    .card.back .content img.logo {
-      height: 40px;
-    }
-
-    .card.back .content .company-name {
-      margin-top: 5px;
-      font-size: 13px;
     }
 
     .card.back .address {
@@ -150,10 +167,27 @@
 
     .card.back .qr {
       margin-top: 10px;
+      position: relative;
     }
 
     .card.back .qr img {
       height: 100px;
+      opacity: 1;
+    }
+
+    .card.back .qr::before {
+      content: "";
+      background-image: url('company-logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.1;
+      position: absolute;
+      top: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 80px;
+      z-index: 1;
     }
 
     .card.back .signatures {
@@ -185,7 +219,10 @@
     <div class="card front">
       <div class="header">
         <img class="logo" src="company-logo.png" alt="Logo" />
-        <div class="company-name">中国中铁六局集团有限公司<br />CREC Padma Bridge Rail Link Project Division 3</div>
+        <div class="company-text">
+          <div class="cn">中国中铁六局集团有限公司</div>
+          <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
+        </div>
       </div>
 
       <div class="photo">
@@ -210,12 +247,15 @@
 
     <!-- BACK -->
     <div class="card back">
-      <div class="header">中国中铁六局集团有限公司 - CREC Division 3</div>
+      <div class="header">
+        <img class="logo" src="company-logo.png" alt="Logo" />
+        <div class="company-text">
+          <div class="cn">中国中铁六局集团有限公司</div>
+          <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
+        </div>
+      </div>
 
       <div class="content">
-        <img class="logo" src="company-logo.png" alt="Logo" />
-        <div class="company-name">CREC Padma Bridge Rail Link Project</div>
-
         <div class="address">
           Address:<br />
           China Project, Polia, Bhanga,<br />
@@ -242,4 +282,4 @@
     </div>
   </div>
 </body>
-            </html>
+</html>
