@@ -4,12 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ID Card</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f2f2f2;
+    }
+
+    .download-btn {
+      margin: 20px;
+      padding: 10px 20px;
+      background: #3399ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
     }
 
     .card-container {
@@ -57,11 +69,10 @@
       flex-direction: column;
     }
 
-    /* চায়না নাম বাম দিকে সরানো */
     .card.front .header .company-name .cn {
       font-size: 14px;
       font-weight: bold;
-      margin-left: 10px; /* আগে ছিল 30px */
+      margin-left: 10px;
     }
 
     .card.front .header .company-name .en {
@@ -144,7 +155,7 @@
     }
 
     .card.back .header img.logo {
-      height: 75px; /* লোগো বড় করা */
+      height: 75px;
       margin-right: 20px;
     }
 
@@ -168,7 +179,6 @@
       padding: 15px 20px;
     }
 
-    /* ঠিকানা বোল্ড করা */
     .card.back .address {
       font-size: 13px;
       margin-top: 5px;
@@ -206,7 +216,10 @@
   </style>
 </head>
 <body>
-  <div class="card-container">
+
+  <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
+
+  <div id="card-area" class="card-container">
 
     <!-- FRONT -->
     <div class="card front">
@@ -275,5 +288,23 @@
     </div>
 
   </div>
+
+  <script>
+    function downloadPDF() {
+      document.querySelector(".download-btn").style.display = "none"; // Hide button
+      const element = document.getElementById("card-area");
+      const opt = {
+        margin:       0,
+        filename:     'id-card.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 3 },
+        jsPDF:        { unit: 'px', format: 'a4', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save().then(() => {
+        document.querySelector(".download-btn").style.display = "block"; // Show again
+      });
+    }
+  </script>
+
 </body>
 </html>
