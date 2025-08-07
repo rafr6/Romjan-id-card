@@ -1,186 +1,245 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-</head>
-
-<body>
-  
-</body>
-
-</html><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ID Card</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      background: #f2f2f2;
+    }
+
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 0;
+    }
+
+    .card {
+      width: 350px;
+      height: 500px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    /* FRONT SIDE */
+    .card.front .header {
+      background: #3399ff;
+      height: 160px;
+      border-bottom-left-radius: 60% 40%;
+      border-bottom-right-radius: 60% 40%;
+      color: white;
       display: flex;
       justify-content: center;
-    }
-    .card {
-      width: 320px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      padding: 20px;
-      text-align: center;
+      align-items: center;
+      flex-direction: column;
       position: relative;
-      margin: 0 auto;
-      display: table;
     }
-    .logos {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
+
+    .card.front .header img.logo {
+      height: 50px;
+      margin-bottom: 5px;
     }
-    .logos img {
-      width: 80px;
-      height: auto;
+
+    .card.front .header .company-name {
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
     }
-    .photo {
-      width: 120px;
-      height: 140px;
-      border: 1px solid #ccc;
-      margin: 0 auto 10px;
-      background-size: cover;
-      background-position: center;
+
+    .card.front .photo {
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #fff;
+      overflow: hidden;
+      border: 4px solid white;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
     }
-    h2 {
-      margin: 10px 0 5px;
-      font-size: 18px;
+
+    .card.front .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .info {
+
+    .card.front .info {
+      margin-top: 70px;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .card.front .info .name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .card.front .info .position {
+      margin: 4px 0;
+    }
+
+    .card.front .info .details {
       text-align: left;
       margin-top: 10px;
     }
-    .info p {
-      margin: 4px 0;
-      font-size: 14px;
+
+    .card.front .info .details div {
+      margin-bottom: 3px;
     }
-    .info span.label {
-      font-weight: normal;
-      color: #333;
+
+    .card.front .info .details strong {
+      display: inline-block;
+      width: 80px;
     }
-    .info span.value {
+
+    .card.front .email {
+      position: absolute;
+      bottom: 0;
+      background: #3399ff;
+      color: white;
+      text-align: center;
+      width: 100%;
+      padding: 6px;
+      font-size: 13px;
+    }
+
+    /* BACK SIDE */
+    .card.back .header {
+      background: #3399ff;
+      color: white;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
       font-weight: bold;
     }
-    .signatures {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 25px;
-      align-items: center;
-      position: relative;
-    }
-    .signatures img {
-      height: 35px;
-    }
-    .signatures p {
-      font-size: 12px;
-      margin-top: 5px;
-    }
-    .seal {
-      position: absolute;
-      right: 20px;
-      top: 5px;
-      height: 50px;
-      opacity: 0.8;
-    }
-    .signature-line {
-      height: 2px;
-      background: #003366;
-      width: 80%;
-      margin: 15px auto 0 auto;
-    }
-    .footer {
-      margin-top: 10px;
-      background: #003366;
-      color: white;
-      padding: 6px;
-      font-size: 14px;
-      border-radius: 0 0 10px 10px;
-    }
-    #downloadBtn {
-      margin-top: 25px;
-      background: #003366;
-      color: white;
-      border: none;
+
+    .card.back .content {
+      text-align: center;
       padding: 10px 20px;
-      font-size: 14px;
-      border-radius: 5px;
-      cursor: pointer;
     }
-    @media print {
-      #downloadBtn {
-        display: none;
-      }
+
+    .card.back .content img.logo {
+      height: 40px;
+    }
+
+    .card.back .content .company-name {
+      margin-top: 5px;
+      font-size: 13px;
+    }
+
+    .card.back .address {
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .card.back .qr {
+      margin-top: 10px;
+    }
+
+    .card.back .qr img {
+      height: 100px;
+    }
+
+    .card.back .signatures {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      margin-top: 20px;
+      font-size: 12px;
+    }
+
+    .card.back .signatures div {
+      text-align: center;
+      width: 45%;
+    }
+
+    .card.back .footer {
+      background: #3399ff;
+      height: 40px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
     }
   </style>
 </head>
 <body>
-  <div>
-    <div class="card" id="idCard">
-      <div class="logos">
-        <img src="logo-left.png" alt="Left Logo">
-        <img src="logo-right.png" alt="Right Logo">
+  <div class="card-container">
+
+    <!-- FRONT -->
+    <div class="card front">
+      <div class="header">
+        <img class="logo" src="company-logo.png" alt="Logo" />
+        <div class="company-name">中国中铁六局集团有限公司<br />CREC Padma Bridge Rail Link Project Division 3</div>
       </div>
-      <div class="photo" style="background-image: url('photo.jpg');"></div>
-      <h2>Emp Code: <strong>257370</strong></h2>
-      <h2>MD Romjan Mia</h2>
+
+      <div class="photo">
+        <img src="photo.jpg" alt="Photo" />
+      </div>
+
       <div class="info">
-        <p><span class="label">Job Title:</span> <span class="value">WELDER</span></p>
-        <p><span class="label">Blood Group:</span> <span class="value">B+</span></p>
-        <p><span class="label">Phone:</span> <span class="value">+880 1767679277</span></p>
-        <p><span class="label">Address:</span><br>
-          <span class="value">Jatrapur, Ashuganj, Ashuganj-3402<br>
-          Brahmanbaria, Chattogram</span></p>
+        <div class="name">MD OBAIDUL HASAN</div>
+        <div class="position">Wheel Loaders (Operator)</div>
+        <div class="details">
+          <div><strong>ID:</strong> 110-0027W-0407</div>
+          <div><strong>DOB:</strong> 10-11-2002</div>
+          <div><strong>Phone:</strong> 01832395343</div>
+          <div><strong>NID:</strong> 8712923831</div>
+          <div><strong>Blood:</strong> O+</div>
+          <div><strong>Join:</strong> 20-February-2020</div>
+        </div>
       </div>
+
+      <div class="email">obaidulhasan381@gmail.com</div>
+    </div>
+
+    <!-- BACK -->
+    <div class="card back">
+      <div class="header">中国中铁六局集团有限公司 - CREC Division 3</div>
+
+      <div class="content">
+        <img class="logo" src="company-logo.png" alt="Logo" />
+        <div class="company-name">CREC Padma Bridge Rail Link Project</div>
+
+        <div class="address">
+          Address:<br />
+          China Project, Polia, Bhanga,<br />
+          Faridpur, Dhaka, Bangladesh.
+        </div>
+
+        <div class="qr">
+          <img src="qrcode.png" alt="QR Code" />
+        </div>
+      </div>
+
       <div class="signatures">
         <div>
-          <img src="sign-left.png" alt="Signature Left">
-          <p>Signature of Holder</p>
+          ___________<br />
+          <span>Authority Signature</span>
         </div>
-        <div style="position: relative;">
-          <img src="sign-right.png" alt="Signature Right">
-          <img class="seal" src="seal.png" alt="Seal">
-          <p>Managing Director</p>
+        <div>
+          ___________<br />
+          <span>Operator Signature</span>
         </div>
       </div>
-      <div class="signature-line"></div>
-      <div class="footer">AFCONS INFRASTRUCTURE LIMITED</div>
-    </div>
-    <div style="text-align: center;">
-      <button id="downloadBtn" onclick="downloadPDF()">Download PDF</button>
+
+      <div class="footer"></div>
     </div>
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <script>
-    function downloadPDF() {
-      const element = document.getElementById('idCard');
-      const btn = document.getElementById('downloadBtn');
-      btn.style.display = 'none';
-
-      const opt = {
-        margin: [80, 0, 0, 0], // top, right, bottom, left margins (pt)
-        filename: 'id-card.pdf',
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: { scale: 4 },
-        jsPDF: { unit: 'pt', format: [320, 450], orientation: 'portrait' }
-      };
-
-      html2pdf().set(opt).from(element).save().then(() => {
-        btn.style.display = 'inline-block';
-      });
-    }
-  </script>
 </body>
-</html>
+            </html>
