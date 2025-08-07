@@ -25,36 +25,30 @@
     /* FRONT PAGE */
     .card-front .blue-header {
       background: #3399ff;
-      height: 150px;
+      height: 180px;
       border-bottom-left-radius: 80% 40%;
       border-bottom-right-radius: 80% 40%;
       color: white;
       padding: 10px 15px;
       position: relative;
-    }
-
-    .card-front .blue-header .logo-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .card-front .blue-header img {
-      height: 60px;
-      margin-right: 15px;
-    }
-
-    .card-front .blue-header .company-names {
-      line-height: 1.4;
       text-align: center;
     }
 
-    .card-front .blue-header .company-names .cn {
+    .card-front .blue-header img {
+      height: 70px;
+      margin-bottom: 5px;
+    }
+
+    .card-front .company-names {
+      line-height: 1.4;
+    }
+
+    .card-front .company-names .cn {
       font-size: 16px;
       font-weight: bold;
     }
 
-    .card-front .blue-header .company-names .en {
+    .card-front .company-names .en {
       font-size: 12px;
     }
 
@@ -65,7 +59,7 @@
       overflow: hidden;
       border: 4px solid white;
       position: absolute;
-      top: 145px;
+      top: 140px;
       left: 50%;
       transform: translateX(-50%);
       background: white;
@@ -79,7 +73,7 @@
     }
 
     .card-front .info {
-      padding: 90px 20px 10px 20px;
+      padding: 80px 20px 10px 20px;
       font-size: 14px;
       position: relative;
       z-index: 1;
@@ -133,33 +127,22 @@
     }
 
     /* BACK PAGE */
-    .card-back .top-header {
+    .card-back .blue-header {
       background: #3399ff;
-      height: 50px;
+      height: 80px;
       color: white;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 14px;
-    }
-
-    .card-back .logo-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      margin-top: 10px;
-    }
-
-    .card-back .logo-row img {
-      height: 40px;
-      margin-right: 10px;
-    }
-
-    .card-back .company-names {
+      flex-direction: column;
       font-size: 13px;
-      line-height: 1.4;
+      padding: 5px 10px;
       text-align: center;
+    }
+
+    .card-back .blue-header img {
+      height: 40px;
+      margin-bottom: 5px;
     }
 
     .card-back .address {
@@ -199,97 +182,4 @@
       font-size: 12px;
     }
 
-    .card-back .signatures div {
-      text-align: center;
-      width: 45%;
-    }
-
-    .card-back .signatures div span {
-      display: inline-block;
-      margin-top: 2px;
-    }
-
-    .card-back .bottom-header {
-      background: #3399ff;
-      height: 40px;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-    }
-
-  </style>
-</head>
-<body>
-
-<!-- FRONT PAGE -->
-<div class="card-front">
-  <div class="blue-header">
-    <div class="logo-row">
-      <img src="company-logo.png" alt="Logo">
-      <div class="company-names">
-        <div class="cn">中国中铁六局集团有限公司</div>
-        <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="photo">
-    <img src="photo.jpg" alt="Photo">
-  </div>
-
-  <div class="info">
-    <div class="name">MD OBAIDUL HASAN</div>
-    <div class="position">Wheel Loaders (Operator)</div>
-    <div class="details">
-      <div><strong>ID:</strong> 110-0027W-0407</div>
-      <div><strong>DOB:</strong> 10-11-2002</div>
-      <div><strong>Phone:</strong> 01832395343</div>
-      <div><strong>NID:</strong> 8712923831</div>
-      <div><strong>Blood:</strong> O+</div>
-      <div><strong>Join:</strong> 20-February-2020</div>
-    </div>
-  </div>
-
-  <div class="watermark">CREC</div>
-  <div class="email">obaidulhasan381@gmail.com</div>
-</div>
-
-<!-- BACK PAGE -->
-<div class="card-back">
-  <div class="top-header"></div>
-
-  <div class="logo-row">
-    <img src="company-logo.png" alt="Logo">
-    <div class="company-names">
-      中国中铁六局集团有限公司<br/>
-      CREC Padma Bridge Rail Link Project Division 3
-    </div>
-  </div>
-
-  <div class="address">
-    Address:<br/>
-    China Project, Polia, Bhanga,<br/>
-    Faridpur, Dhaka, Bangladesh.
-  </div>
-
-  <div class="qr">
-    <div class="watermark">CREC</div>
-    <img src="qrcode.png" alt="QR Code">
-  </div>
-
-  <div class="signatures">
-    <div>
-      ___________<br>
-      <span>Authority Signature</span>
-    </div>
-    <div>
-      ___________<br>
-      <span>Operator Signature</span>
-    </div>
-  </div>
-
-  <div class="bottom-header"></div>
-</div>
-
-</body>
-  </html>
+    .card-back
