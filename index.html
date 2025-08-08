@@ -214,33 +214,40 @@
     margin-top: 5px;
     font-weight: bold;
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
   .card.back .qr {
     margin-top: 40px;
     position: relative;
-    z-index: 1;
+    width: 130px; /* QR কোডের আসল প্রস্থ */
+    height: 130px; /* QR কোডের আসল উচ্চতা */
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
   }
 
   .card.back .qr .watermark-back {
     position: absolute;
-    top:40px;          /* নিচে নামানো হয়েছে */
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 300px;       /* বড় করা হয়েছে */
-    height: 200px;      /* বড় করা হয়েছে */
+    width: 140px;  /* বড় সাইজ */
+    height: 140px; /* বড় সাইজ */
     background: url('company-logo.png') no-repeat center;
     background-size: contain;
-    opacity: 0.3;
+    opacity: 0.25;
     pointer-events: none;
-    z-index: 0;
+    transform: translate(-50%, -50%);
+    z-index: 1;
   }
 
   .card.back .qr img {
-    height: 110px;
+    height: 130px;
+    width: 130px;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    display: block;
+    margin: 0 auto;
   }
 
   .card.back .signatures {
@@ -360,21 +367,4 @@ function downloadPDF() {
     html2canvas: {
       scale: 3,
       scrollX: 0,
-      scrollY: 0
-    },
-    jsPDF: {
-      unit: 'px',
-      format: [650, 842],
-      orientation: 'portrait'
-    },
-    pagebreak: { mode: ['avoid', 'css', 'legacy'] }
-  };
-
-  html2pdf().set(opt).from(element).save().then(() => {
-    document.querySelector(".download-btn").style.display = "block";
-  });
-}
-</script>
-
-</body>
-</html>
+      scrollY:
