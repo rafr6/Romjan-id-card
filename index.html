@@ -149,7 +149,7 @@
     width: 80px;
   }
 
-  /* নতুন জলছাপ */
+  /* নতুন জলছাপ (Front page) */
   .card.front .info .watermark {
     position: absolute;
     top: 38px;  /* পদবির নিচ থেকে শুরু */
@@ -204,19 +204,39 @@
     font-size: 13px;
   }
 
+  /* Back page content with watermark */
   .card.back .content {
     text-align: center;
     padding: 15px 20px;
+    position: relative; /* watermark জন্য relative */
+  }
+
+  .card.back .content .watermark-back {
+    position: absolute;
+    top: 10px;   /* QR কোডের উপরে */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 100px;
+    background: url('company-logo.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
   }
 
   .card.back .address {
     font-size: 13px;
     margin-top: 5px;
     font-weight: bold;
+    position: relative;
+    z-index: 1;
   }
 
   .card.back .qr {
     margin-top: 40px;
+    position: relative;
+    z-index: 1;
   }
 
   .card.back .qr img {
@@ -306,6 +326,9 @@
           China Project, Polia, Bhanga,<br />
           Faridpur, Dhaka, Bangladesh.
         </div>
+
+        <!-- পিছনের পৃষ্ঠার জলছাপ -->
+        <div class="watermark-back"></div>
 
         <div class="qr">
           <img src="qrcode.png" alt="QR Code" />
