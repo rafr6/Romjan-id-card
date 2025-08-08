@@ -23,24 +23,22 @@
       font-size: 14px;
     }
 
-    /* পিডিএফের প্রতিটি পেজ */
     #card-area, .page {
-      width: 650px; /* A4 width থেকে বড়ো করে 650 দিলাম */
-      min-height: 842px; /* A4 height */
+      width: 650px;
+      min-height: 842px;
       background: #fff;
       box-sizing: border-box;
     }
 
     .page {
-      height: 842px; /* A4 height */
+      height: 842px;
       page-break-after: always;
       box-sizing: border-box;
       background: white;
 
-      /* flex দিয়ে পুরো পেজে কার্ড vertical + horizontal সেন্টার */
       display: flex;
-      justify-content: center; /* horizontal center */
-      align-items: center; /* vertical center */
+      justify-content: center; /* Horizontal center */
+      align-items: center; /* Vertical center */
     }
 
     .card {
@@ -311,18 +309,19 @@
       document.querySelector(".download-btn").style.display = "none";
 
       const opt = {
-        margin: 0, // margin 0 to remove offset
+        margin: 0,
         filename: 'id-card.pdf',
         image: { type: 'jpeg', quality: 1 },
         html2canvas: {
           scale: 3,
+          scrollX: 0,
           scrollY: 0,
-          windowWidth: 650,  // 595 থেকে বড় করে 650
+          windowWidth: 650,
           windowHeight: 842,
         },
         jsPDF: {
           unit: 'px',
-          format: [650, 842],  // <-- এখানে 595 এর পরিবর্তে 650 দিলাম
+          format: [650, 842],
           orientation: 'portrait',
         }
       };
