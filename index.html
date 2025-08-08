@@ -73,7 +73,7 @@
   .card.front .header .logo {
     height: 60px;
     margin-left: 5px;
-    margin-top: -5px; /* লোগো উপরে তোলা */
+    margin-top: -5px;
   }
 
   .card.front .header .company-name {
@@ -119,7 +119,7 @@
     padding: 10px 20px 50px;
     text-align: center;
     font-size: 14px;
-    position: relative; /* জলছাপের জন্য relative রাখলাম */
+    position: relative;
   }
 
   .card.front .info .name {
@@ -137,7 +137,7 @@
     text-align: left;
     margin-top: 8px;
     font-weight: bold;
-    position: relative; /* জলছাপের জন্য relative রাখলাম */
+    position: relative;
   }
 
   .card.front .info .details div {
@@ -149,17 +149,16 @@
     width: 80px;
   }
 
-  /* নতুন জলছাপ (Front page) */
   .card.front .info .watermark {
     position: absolute;
-    top: 38px;  /* পদবির নিচ থেকে শুরু */
+    top: 38px;
     left: 0;
     right: 0;
-    height: 140px; /* জয়েন এর নিচ পর্যন্ত জায়গা */
+    height: 140px;
     background: url('company-logo.png') no-repeat center;
     background-size: 45% auto;
     opacity: 0.3;
-    pointer-events: none; /* যাতে ক্লিক ইভেন্ট বাধা না দেয় */
+    pointer-events: none;
     z-index: 1;
   }
 
@@ -204,11 +203,10 @@
     font-size: 13px;
   }
 
-  /* Back page content with watermark */
   .card.back .content {
     text-align: center;
     padding: 15px 20px;
-    position: relative; /* watermark জন্য relative */
+    position: relative;
   }
 
   .card.back .address {
@@ -221,22 +219,22 @@
 
   .card.back .qr {
     margin-top: 40px;
-    position: relative; /* রিলেটিভ রাখতে হবে */
+    position: relative;
     z-index: 1;
   }
 
   .card.back .qr .watermark-back {
-    position: absolute; /* অ্যাবসলুট পজিশন */
-    top: -20px;          /* QR কোডের ঠিক উপরে */
+    position: absolute;
+    top: 20px;          /* নিচে নামানো হয়েছে */
     left: 50%;
     transform: translateX(-50%);
-    width: 180px;
-    height: 100px;
+    width: 250px;       /* বড় করা হয়েছে */
+    height: 140px;      /* বড় করা হয়েছে */
     background: url('company-logo.png') no-repeat center;
     background-size: contain;
     opacity: 0.1;
     pointer-events: none;
-    z-index: 0; /* QR কোডের নিচে থাকবে */
+    z-index: 0;
   }
 
   .card.back .qr img {
@@ -294,7 +292,6 @@
         <div class="name">MD RAHIM MIA</div>
         <div class="position">EXCAVATOR (Operator)</div>
 
-        <!-- জলছাপ এখানে যোগ করা হলো -->
         <div class="watermark"></div>
 
         <div class="details">
@@ -330,7 +327,6 @@
         </div>
 
         <div class="qr">
-          <!-- পিছনের পৃষ্ঠার জলছাপ -->
           <div class="watermark-back"></div>
           <img src="qrcode.png" alt="QR Code" />
         </div>
