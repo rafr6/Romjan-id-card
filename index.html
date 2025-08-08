@@ -36,19 +36,16 @@
       height: 842px; /* A4 height */
       page-break-after: always;
       box-sizing: border-box;
-
-      /* Flex দিয়ে পুরো পেজ সেন্টারে কার্ড */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
       background: white;
-      position: relative;
+
+      /* pdf rendering এর জন্য inline-block এবং centered */
+      text-align: center;
     }
 
     .card {
       width: 350px;
       height: 500px;
+      margin: auto; /* কার্ডকে পেজে horizontally centered করার জন্য */
       border: 1px solid #ccc;
       border-radius: 12px;
       overflow: hidden;
@@ -56,6 +53,12 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       position: relative;
       box-sizing: border-box;
+
+      /* কার্ডকে vertical center করার জন্য প্যাডিং টপ ও বট দিলাম */
+      margin-top: calc((842px - 500px) / 2);
+      margin-bottom: calc((842px - 500px) / 2);
+      display: inline-block;
+      vertical-align: middle;
     }
 
     /* FRONT SIDE */
@@ -312,19 +315,19 @@
       document.querySelector(".download-btn").style.display = "none";
 
       const opt = {
-        margin: [20, 0, 20, 0], // top, left, bottom, right margin (px) - left/right 0 to center horizontally
+        margin: 0, // margin 0 to remove offset
         filename: 'id-card.pdf',
         image: { type: 'jpeg', quality: 1 },
         html2canvas: {
           scale: 3,
           scrollY: 0,
           windowWidth: 595,
-          windowHeight: 842
+          windowHeight: 842,
         },
         jsPDF: {
           unit: 'px',
           format: [595, 842],
-          orientation: 'portrait'
+          orientation: 'portrait',
         }
       };
 
