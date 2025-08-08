@@ -28,18 +28,22 @@
       width: 595px; /* A4 width */
       min-height: 842px; /* A4 height */
       background: #fff;
+      box-sizing: border-box;
     }
 
     .page {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: 595px; /* A4 width */
       height: 842px; /* A4 height */
       page-break-after: always;
       box-sizing: border-box;
-      position: relative;
+
+      /* Flex দিয়ে পুরো পেজ সেন্টারে কার্ড */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       background: white;
+      position: relative;
     }
 
     .card {
@@ -51,6 +55,7 @@
       background: #fff;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       position: relative;
+      box-sizing: border-box;
     }
 
     /* FRONT SIDE */
@@ -307,18 +312,18 @@
       document.querySelector(".download-btn").style.display = "none";
 
       const opt = {
-        margin: [20, 10, 20, 10], // top, left, bottom, right margin (px)
+        margin: [20, 0, 20, 0], // top, left, bottom, right margin (px) - left/right 0 to center horizontally
         filename: 'id-card.pdf',
         image: { type: 'jpeg', quality: 1 },
         html2canvas: {
           scale: 3,
           scrollY: 0,
-          windowWidth: 595, // A4 width in px
-          windowHeight: 842 // A4 height in px
+          windowWidth: 595,
+          windowHeight: 842
         },
         jsPDF: {
           unit: 'px',
-          format: [595, 842], // A4 size in px
+          format: [595, 842],
           orientation: 'portrait'
         }
       };
