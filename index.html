@@ -24,13 +24,17 @@
       font-size: 14px;
     }
 
+    /* পিডিএফে পেজের জন্য .page কে ফ্লেক্স দিয়ে কেন্দ্রে সেট করলাম */
     .page {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      background: #f2f2f2;
-      page-break-after: always; /* পিডিএফে নতুন পেইজ শুরু হবে */
+      min-height: 842px; /* A4 পেজ উচ্চতা px এ */
+      width: 595px; /* A4 পেজ প্রস্থ px এ */
+      background: #fff; /* পিডিএফে সাদা ব্যাকগ্রাউন্ড */
+      page-break-after: always;
+      margin: 0 auto;
+      position: relative;
     }
 
     .card {
@@ -296,13 +300,15 @@
     function downloadPDF() {
       document.querySelector(".download-btn").style.display = "none";
       const element = document.getElementById("card-area");
+
       const opt = {
-        margin:       0,
-        filename:     'id-card.pdf',
-        image:        { type: 'jpeg', quality: 1 },
-        html2canvas:  { scale: 3 },
-        jsPDF:        { unit: 'px', format: 'a4', orientation: 'portrait' }
+        margin: 10,  // পেজের চারপাশে একটু মার্জিন
+        filename: 'id-card.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { scale: 3, scrollY: 0 },
+        jsPDF: { unit: 'px', format: 'a4', orientation: 'portrait' }
       };
+
       html2pdf().set(opt).from(element).save().then(() => {
         document.querySelector(".download-btn").style.display = "block";
       });
