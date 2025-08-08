@@ -40,6 +40,7 @@
     margin: 0 auto;
     page-break-after: always;
     padding: 0;
+    position: relative;
   }
 
   .card {
@@ -53,12 +54,13 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    position: relative;
   }
 
   /* Front Side */
   .card.front .header {
     background: #3399ff;
-    height: 180px;
+    height: 140px;
     border-bottom-left-radius: 60% 40%;
     border-bottom-right-radius: 60% 40%;
     color: white;
@@ -69,8 +71,7 @@
   }
 
   .card.front .header .logo {
-    height: 70px;
-    margin-top: -15px;
+    height: 60px;
     margin-left: 5px;
   }
 
@@ -93,7 +94,7 @@
 
   .card.front .photo {
     position: absolute;
-    top: 94px;
+    top: 100px;
     left: 50%;
     transform: translateX(-50%);
     width: 100px;
@@ -113,7 +114,7 @@
   }
 
   .card.front .info {
-    margin-top: 12px;
+    margin-top: 120px;
     padding: 10px 20px 50px;
     text-align: center;
     font-size: 14px;
@@ -167,7 +168,7 @@
   }
 
   .card.back .header img.logo {
-    height: 75px;
+    height: 60px;
     margin-right: 20px;
   }
 
@@ -220,10 +221,13 @@
 
   .card.back .footer {
     background: #3399ff;
-    height: 40px;
+    color: white;
+    font-size: 13px;
+    text-align: center;
     position: absolute;
     bottom: 0;
     width: 100%;
+    padding: 6px;
   }
 </style>
 </head>
@@ -298,7 +302,7 @@
         </div>
       </div>
 
-      <div class="footer"></div>
+      <div class="footer">For office use only</div>
     </div>
   </div>
 </div>
