@@ -220,8 +220,8 @@
   .card.back .qr {
     margin-top: 40px;
     position: relative;
-    width: 130px; /* QR কোডের আসল প্রস্থ */
-    height: 130px; /* QR কোডের আসল উচ্চতা */
+    width: 130px;
+    height: 130px;
     margin-left: auto;
     margin-right: auto;
     z-index: 2;
@@ -231,8 +231,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 360px;  /* বড় সাইজ */
-    height: 360px; /* বড় সাইজ */
+    width: 360px;
+    height: 360px;
     background: url('company-logo.png') no-repeat center;
     background-size: contain;
     opacity: 0.33;
@@ -358,13 +358,23 @@
 <script>
 function downloadPDF() {
   const element = document.getElementById('card-area');
-  document.querySelector(".download-btn").style.display = "none";
+  const btn = document.querySelector(".download-btn");
+  btn.style.display = "none";
 
   const opt = {
-    margin: [0, 0, 0, 0],
-    filename: 'id-card.pdf',
-    image: { type: 'jpeg', quality: 1 },
-    html2canvas: {
-      scale: 3,
-      scrollX: 0,
-      scrollY:
+    margin:       [0, 0, 0, 0],
+    filename:     'id-card.pdf',
+    image:        { type: 'jpeg', quality: 1 },
+    html2canvas:  { scale: 3, scrollX: 0, scrollY: 0 },
+    jsPDF:        { unit: 'px', format: [650, 842], orientation: 'portrait' },
+    pagebreak:    { mode: ['avoid', 'css', 'legacy'] }
+  };
+
+  html2pdf().set(opt).from(element).save().then(() => {
+    btn.style.display = "inline-block";
+  });
+}
+</script>
+
+</body>
+</html>
