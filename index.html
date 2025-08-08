@@ -299,21 +299,26 @@
   <script>
     function downloadPDF() {
       document.querySelector(".download-btn").style.display = "none";
-      const element = document.getElementById("card-area");
 
-      const opt = {
-        margin: 10,  // পেজের চারপাশে একটু মার্জিন
-        filename: 'id-card.pdf',
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: { scale: 3, scrollY: 0 },
-        jsPDF: { unit: 'px', format: 'a4', orientation: 'portrait' }
-      };
+      const pages = document.querySelectorAll('.page');
+      let promises = [];
 
-      html2pdf().set(opt).from(element).save().then(() => {
+      pages.forEach((page, index) => {
+        const opt = {
+          margin: 10,
+          filename: `id-card-page-${index + 1}.pdf`,
+          image: { type: 'jpeg', quality: 1 },
+          html2canvas: { scale: 3, scrollY: 0 },
+          jsPDF: { unit: 'px', format: 'a4', orientation: 'portrait' }
+        };
+        promises.push(html2pdf().set(opt).from(page).save());
+      });
+
+      Promise.all(promises).then(() => {
         document.querySelector(".download-btn").style.display = "block";
       });
     }
   </script>
 
 </body>
-  </html>
+          </html>
