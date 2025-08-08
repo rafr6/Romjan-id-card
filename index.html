@@ -211,20 +211,6 @@
     position: relative; /* watermark জন্য relative */
   }
 
-  .card.back .content .watermark-back {
-    position: absolute;
-    top: 10px;   /* QR কোডের উপরে */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 180px;
-    height: 100px;
-    background: url('company-logo.png') no-repeat center;
-    background-size: contain;
-    opacity: 0.1;
-    pointer-events: none;
-    z-index: 0;
-  }
-
   .card.back .address {
     font-size: 13px;
     margin-top: 5px;
@@ -235,12 +221,28 @@
 
   .card.back .qr {
     margin-top: 40px;
-    position: relative;
+    position: relative; /* রিলেটিভ রাখতে হবে */
     z-index: 1;
+  }
+
+  .card.back .qr .watermark-back {
+    position: absolute; /* অ্যাবসলুট পজিশন */
+    top: -20px;          /* QR কোডের ঠিক উপরে */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 100px;
+    background: url('company-logo.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0; /* QR কোডের নিচে থাকবে */
   }
 
   .card.back .qr img {
     height: 110px;
+    position: relative;
+    z-index: 1;
   }
 
   .card.back .signatures {
@@ -327,10 +329,9 @@
           Faridpur, Dhaka, Bangladesh.
         </div>
 
-        <!-- পিছনের পৃষ্ঠার জলছাপ -->
-        <div class="watermark-back"></div>
-
         <div class="qr">
+          <!-- পিছনের পৃষ্ঠার জলছাপ -->
+          <div class="watermark-back"></div>
           <img src="qrcode.png" alt="QR Code" />
         </div>
       </div>
