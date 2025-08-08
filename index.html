@@ -263,21 +263,34 @@
     width: 45%;
   }
 
+  /* নতুন স্টাইল: পিএনজি ছবির জন্য */
   .card.back .signatures img {
     max-width: 100px;
     height: auto;
-    margin-bottom: 2px;
+    margin-bottom: 8px;
+    position: relative;
+    top: -10px; /* উপরে উঠানোর জন্য */
   }
 
-  .card.back .footer {
-    background: #3399ff;
-    color: white;
-    font-size: 13px;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 18px;
+  /* ছবির নিচে পাতলা বর্ডার */
+  .signature-border {
+    border-top: 1px solid #000;
+    margin: 0 auto 4px auto;
+    max-width: 100px;
+  }
+
+  /* সিগনেচার লেখার স্টাইল */
+  .signature-text {
+    display: block;
+    font-weight: normal;
+    font-size: 12px;
+    margin-top: 0;
+  }
+
+  /* পূর্বের রেখার স্থানের পরিবর্তে নিচের স্টাইল */
+  .card.back .signatures div span {
+    position: relative;
+    top: 0;
   }
 </style>
 </head>
@@ -348,13 +361,13 @@
       <div class="signatures">
         <div>
           <img src="authority-sign.png" alt="Authority Signature" />
-          ___________<br />
-          <span>Authority Signature</span>
+          <div class="signature-border"></div>
+          <span class="signature-text">Authority Signature</span>
         </div>
         <div>
           <img src="operator-sign.png" alt="Operator Signature" />
-          ___________<br />
-          <span>Operator Signature</span>
+          <div class="signature-border"></div>
+          <span class="signature-text">Operator Signature</span>
         </div>
       </div>
 
