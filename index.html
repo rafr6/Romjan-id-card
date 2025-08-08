@@ -24,15 +24,14 @@
     }
 
     /* পিডিএফের প্রতিটি পেজ */
-    #card-area {
-      width: 595px; /* A4 width */
+    #card-area, .page {
+      width: 650px; /* A4 width থেকে বড়ো করে 650 দিলাম */
       min-height: 842px; /* A4 height */
       background: #fff;
       box-sizing: border-box;
     }
 
     .page {
-      width: 595px; /* A4 width */
       height: 842px; /* A4 height */
       page-break-after: always;
       box-sizing: border-box;
@@ -47,7 +46,7 @@
     .card {
       width: 350px;
       height: 500px;
-      margin: 0; /* margin auto ও vertical margin বাদ দিলাম */
+      margin: 0;
       border: 1px solid #ccc;
       border-radius: 12px;
       overflow: hidden;
@@ -318,12 +317,12 @@
         html2canvas: {
           scale: 3,
           scrollY: 0,
-          windowWidth: 595,
+          windowWidth: 650,  // 595 থেকে বড় করে 650
           windowHeight: 842,
         },
         jsPDF: {
           unit: 'px',
-          format: [595, 842],
+          format: [595, 842], // A4 size
           orientation: 'portrait',
         }
       };
