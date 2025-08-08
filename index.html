@@ -38,14 +38,16 @@
       box-sizing: border-box;
       background: white;
 
-      /* pdf rendering এর জন্য inline-block এবং centered */
-      text-align: center;
+      /* flex দিয়ে পুরো পেজে কার্ড vertical + horizontal সেন্টার */
+      display: flex;
+      justify-content: center; /* horizontal center */
+      align-items: center; /* vertical center */
     }
 
     .card {
       width: 350px;
       height: 500px;
-      margin: auto; /* কার্ডকে পেজে horizontally centered করার জন্য */
+      margin: 0; /* margin auto ও vertical margin বাদ দিলাম */
       border: 1px solid #ccc;
       border-radius: 12px;
       overflow: hidden;
@@ -53,12 +55,7 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       position: relative;
       box-sizing: border-box;
-
-      /* কার্ডকে vertical center করার জন্য প্যাডিং টপ ও বট দিলাম */
-      margin-top: calc((842px - 500px) / 2);
-      margin-bottom: calc((842px - 500px) / 2);
-      display: inline-block;
-      vertical-align: middle;
+      display: block;
     }
 
     /* FRONT SIDE */
@@ -314,14 +311,6 @@
       const element = document.getElementById('card-area');
       document.querySelector(".download-btn").style.display = "none";
 
-      // পিডিএফ ডাউনলোডের সময় প্রতিটি পেজকে flex করে কার্ড সেন্টারে আনবো
-      const pages = element.querySelectorAll('.page');
-      pages.forEach(page => {
-        page.style.display = 'flex';
-        page.style.justifyContent = 'center';
-        page.style.alignItems = 'center';
-      });
-
       const opt = {
         margin: 0, // margin 0 to remove offset
         filename: 'id-card.pdf',
@@ -340,16 +329,10 @@
       };
 
       html2pdf().set(opt).from(element).save().then(() => {
-        // পিডিএফ ডাউনলোড শেষে CSS পরিবর্তনগুলো মুছে ফেলা
-        pages.forEach(page => {
-          page.style.display = '';
-          page.style.justifyContent = '';
-          page.style.alignItems = '';
-        });
         document.querySelector(".download-btn").style.display = "block";
       });
     }
   </script>
 
 </body>
-                                                   </html>
+</html>
