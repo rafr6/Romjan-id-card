@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ID Card</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       background: #f2f2f2;
     }
 
@@ -24,17 +23,23 @@
       font-size: 14px;
     }
 
-    /* পিডিএফে পেজের জন্য .page কে ফ্লেক্স দিয়ে কেন্দ্রে সেট করলাম */
+    /* পিডিএফের প্রতিটি পেজ */
+    #card-area {
+      width: 595px; /* A4 width */
+      min-height: 842px; /* A4 height */
+      background: #fff;
+    }
+
     .page {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 842px; /* A4 পেজ উচ্চতা px এ */
-      width: 595px; /* A4 পেজ প্রস্থ px এ */
-      background: #fff; /* পিডিএফে সাদা ব্যাকগ্রাউন্ড */
+      width: 595px; /* A4 width */
+      height: 842px; /* A4 height */
       page-break-after: always;
-      margin: 0 auto;
+      box-sizing: border-box;
       position: relative;
+      background: white;
     }
 
     .card {
@@ -242,10 +247,10 @@
 
         <div class="info">
           <div class="name">MD OBAIDUL HASAN</div>
-          <div class="position">EXCAVATOR (Operator)</div>
+          <div class="position">Wheel Loaders (Operator)</div>
           <div class="details">
-            <div><strong>ID:</strong> 341-0067W-0297</div>
-            <div><strong>DOB:</strong> 02-04-2002</div>
+            <div><strong>ID:</strong> 110-0027W-0407</div>
+            <div><strong>DOB:</strong> 10-11-2002</div>
             <div><strong>Phone:</strong> 01832395343</div>
             <div><strong>NID:</strong> 8712923831</div>
             <div><strong>Blood:</strong> O+</div>
@@ -298,27 +303,31 @@
 
   <script>
     function downloadPDF() {
+      const element = document.getElementById('card-area');
       document.querySelector(".download-btn").style.display = "none";
 
-      const pages = document.querySelectorAll('.page');
-      let promises = [];
+      const opt = {
+        margin: [20, 10, 20, 10], // top, left, bottom, right margin (px)
+        filename: 'id-card.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: {
+          scale: 3,
+          scrollY: 0,
+          windowWidth: 595, // A4 width in px
+          windowHeight: 842 // A4 height in px
+        },
+        jsPDF: {
+          unit: 'px',
+          format: [595, 842], // A4 size in px
+          orientation: 'portrait'
+        }
+      };
 
-      pages.forEach((page, index) => {
-        const opt = {
-          margin: 10,
-          filename: `id-card-page-${index + 1}.pdf`,
-          image: { type: 'jpeg', quality: 1 },
-          html2canvas: { scale: 3, scrollY: 0 },
-          jsPDF: { unit: 'px', format: 'a4', orientation: 'portrait' }
-        };
-        promises.push(html2pdf().set(opt).from(page).save());
-      });
-
-      Promise.all(promises).then(() => {
+      html2pdf().set(opt).from(element).save().then(() => {
         document.querySelector(".download-btn").style.display = "block";
       });
     }
   </script>
 
 </body>
-          </html>
+            </html>
