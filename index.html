@@ -11,6 +11,7 @@
     margin: 0; padding: 0;
     background: #f2f2f2;
   }
+
   .download-btn {
     margin: 20px;
     padding: 10px 20px;
@@ -21,11 +22,13 @@
     cursor: pointer;
     font-size: 14px;
   }
+
   #card-area {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .page {
     width: 650px;
     height: 842px;
@@ -39,6 +42,7 @@
     padding: 0;
     position: relative;
   }
+
   .card {
     width: 350px;
     height: 500px;
@@ -52,6 +56,7 @@
     justify-content: flex-start;
     position: relative;
   }
+
   /* Front Side */
   .card.front .header {
     background: #3399ff;
@@ -64,25 +69,30 @@
     display: flex;
     align-items: flex-start;
   }
+
   .card.front .header .logo {
     height: 60px;
     margin-left: 5px;
     margin-top: -5px;
   }
+
   .card.front .header .company-name {
     margin-top: 5px;
     margin-left: 10px;
     display: flex;
     flex-direction: column;
   }
+
   .card.front .header .company-name .cn {
     font-size: 14px;
     font-weight: bold;
     margin-left: 10px;
   }
+
   .card.front .header .company-name .en {
     font-size: 12px;
   }
+
   .card.front .photo {
     position: absolute;
     top: 53px;
@@ -97,11 +107,13 @@
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     z-index: 2;
   }
+
   .card.front .photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   .card.front .info {
     margin-top: 20px;
     padding: 10px 20px 50px;
@@ -109,28 +121,34 @@
     font-size: 14px;
     position: relative;
   }
+
   .card.front .info .name {
     font-size: 16px;
     font-weight: bold;
   }
+
   .card.front .info .position {
     font-size: 14px;
     margin: 3px 0;
     color: blue;
   }
+
   .card.front .info .details {
     text-align: left;
     margin-top: 8px;
     font-weight: bold;
     position: relative;
   }
+
   .card.front .info .details div {
     margin-bottom: 3px;
   }
+
   .card.front .info .details strong {
     display: inline-block;
     width: 80px;
   }
+
   .card.front .info .watermark {
     position: absolute;
     top: 38px;
@@ -143,6 +161,7 @@
     pointer-events: none;
     z-index: 1;
   }
+
   .card.front .email {
     position: absolute;
     bottom: 0;
@@ -153,6 +172,7 @@
     padding: 10px;
     font-size: 13px;
   }
+
   /* Back Side */
   .card.back .header {
     background: #3399ff;
@@ -162,27 +182,33 @@
     align-items: center;
     padding: 0 10px;
   }
+
   .card.back .header img.logo {
     height: 60px;
     margin-right: 20px;
   }
+
   .card.back .header .company-text {
     text-align: center;
     flex: 1;
   }
+
   .card.back .header .company-text .cn {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 3px;
   }
+
   .card.back .header .company-text .en {
     font-size: 13px;
   }
+
   .card.back .content {
     text-align: center;
     padding: 15px 20px;
     position: relative;
   }
+
   .card.back .address {
     font-size: 13px;
     margin-top: 5px;
@@ -190,6 +216,7 @@
     position: relative;
     z-index: 2;
   }
+
   .card.back .qr {
     margin-top: 40px;
     position: relative;
@@ -199,6 +226,7 @@
     margin-right: auto;
     z-index: 2;
   }
+
   .card.back .qr .watermark-back {
     position: absolute;
     top: 50%;
@@ -212,6 +240,7 @@
     transform: translate(-50%, -50%);
     z-index: 1;
   }
+
   .card.back .qr img {
     height: 130px;
     width: 130px;
@@ -220,6 +249,7 @@
     display: block;
     margin: 0 auto;
   }
+
   .card.back .signatures {
     display: flex;
     justify-content: space-between;
@@ -227,18 +257,18 @@
     margin-top: 115px;
     font-size: 12px;
   }
+
   .card.back .signatures div {
     text-align: center;
     width: 45%;
   }
-  .sig-line {
-    border-top: 1px solid #000;
-    margin: 5px 0;
+
+  .card.back .signatures img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 2px;
   }
-  .signature-img {
-    height: 30px;
-    margin-bottom: 3px;
-  }
+
   .card.back .footer {
     background: #3399ff;
     color: white;
@@ -266,13 +296,17 @@
           <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
         </div>
       </div>
+
       <div class="photo">
         <img src="photo.jpg" alt="Photo" />
       </div>
+
       <div class="info">
         <div class="name">MD RAHIM MIA</div>
         <div class="position">EXCAVATOR (Operator)</div>
+
         <div class="watermark"></div>
+
         <div class="details">
           <div><strong>ID:</strong> 189-0327W-0489</div>
           <div><strong>DOB:</strong> 02-04-2002</div>
@@ -282,6 +316,7 @@
           <div><strong>Join:</strong> 20-February-2020</div>
         </div>
       </div>
+
       <div class="email">mdrahimmia99@gmail.com</div>
     </div>
   </div>
@@ -296,29 +331,33 @@
           <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
         </div>
       </div>
+
       <div class="content">
         <div class="address">
           Address:<br />
           China Project, Polia, Bhanga,<br />
           Faridpur, Dhaka, Bangladesh.
         </div>
+
         <div class="qr">
           <div class="watermark-back"></div>
           <img src="qrcode.png" alt="QR Code" />
         </div>
       </div>
+
       <div class="signatures">
         <div>
-          <div class="sig-line"></div>
-          <img src="authority-sign.png" alt="Authority Sign" class="signature-img" /><br />
+          <img src="authority-sign.png" alt="Authority Signature" />
+          ___________<br />
           <span>Authority Signature</span>
         </div>
         <div>
-          <div class="sig-line"></div>
-          <img src="operator-sign.png" alt="Operator Sign" class="signature-img" /><br />
+          <img src="operator-sign.png" alt="Operator Signature" />
+          ___________<br />
           <span>Operator Signature</span>
         </div>
       </div>
+
       <div class="footer"></div>
     </div>
   </div>
@@ -329,6 +368,7 @@ function downloadPDF() {
   const element = document.getElementById('card-area');
   const btn = document.querySelector(".download-btn");
   btn.style.display = "none";
+
   const opt = {
     margin:       [0, 0, 0, 0],
     filename:     'id-card.pdf',
@@ -337,6 +377,7 @@ function downloadPDF() {
     jsPDF:        { unit: 'px', format: [650, 842], orientation: 'portrait' },
     pagebreak:    { mode: ['avoid', 'css', 'legacy'] }
   };
+
   html2pdf().set(opt).from(element).save().then(() => {
     btn.style.display = "inline-block";
   });
