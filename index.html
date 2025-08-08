@@ -1,339 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ID Card</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: #f2f2f2;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ID Card</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 0;
+    background: #f2f2f2;
+  }
 
-    .download-btn {
-      margin: 20px;
-      padding: 10px 20px;
-      background: #3399ff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 14px;
-    }
+  .download-btn {
+    margin: 20px;
+    padding: 10px 20px;
+    background: #3399ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
 
-    #card-area {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+  #card-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .page {
-      width: 650px;
-      height: 842px;
-      background: #fff;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto;
-      page-break-after: always;
-      padding: 0;
-    }
+  .page {
+    width: 650px;
+    height: 842px;
+    background: #fff;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    page-break-after: always;
+    padding: 0;
+  }
 
-    .card {
-      width: 350px;
-      height: 500px;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      position: relative;
-      box-sizing: border-box;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
+  .card {
+    width: 350px;
+    height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 
-    /* FRONT SIDE */
-    .card.front .header {
-      background: #3399ff;
-      height: 180px;
-      border-bottom-left-radius: 60% 40%;
-      border-bottom-right-radius: 60% 40%;
-      color: white;
-      position: relative;
-      padding: 10px;
-      display: flex;
-      align-items: flex-start;
-    }
+  /* Front Side */
+  .card.front .header {
+    background: #3399ff;
+    height: 180px;
+    border-bottom-left-radius: 60% 40%;
+    border-bottom-right-radius: 60% 40%;
+    color: white;
+    position: relative;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+  }
 
-    .card.front .header .logo {
-      height: 70px;
-      margin-top: -15px;
-      margin-left: 5px;
-    }
+  .card.front .header .logo {
+    height: 70px;
+    margin-top: -15px;
+    margin-left: 5px;
+  }
 
-    .card.front .header .company-name {
-      margin-top: 5px;
-      margin-left: 10px;
-      display: flex;
-      flex-direction: column;
-    }
+  .card.front .header .company-name {
+    margin-top: 5px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .card.front .header .company-name .cn {
-      font-size: 14px;
-      font-weight: bold;
-      margin-left: 10px;
-    }
+  .card.front .header .company-name .cn {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+  }
 
-    .card.front .header .company-name .en {
-      font-size: 12px;
-    }
+  .card.front .header .company-name .en {
+    font-size: 12px;
+  }
 
-    .card.front .photo {
-      position: absolute;
-      top: 94px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: #fff;
-      overflow: hidden;
-      border: 4px solid white;
-      box-shadow: 0 0 5px rgba(0,0,0,0.2);
-      z-index: 2;
-    }
+  .card.front .photo {
+    position: absolute;
+    top: 94px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #fff;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    z-index: 2;
+  }
 
-    .card.front .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  .card.front .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-    .card.front .info {
-      margin-top: 12px;
-      padding: 10px 20px 50px;
-      text-align: center;
-      font-size: 14px;
-    }
+  .card.front .info {
+    margin-top: 12px;
+    padding: 10px 20px 50px;
+    text-align: center;
+    font-size: 14px;
+  }
 
-    .card.front .info .name {
-      font-size: 16px;
-      font-weight: bold;
-    }
+  .card.front .info .name {
+    font-size: 16px;
+    font-weight: bold;
+  }
 
-    .card.front .info .position {
-      font-size: 14px;
-      margin: 3px 0;
-      color: blue;
-    }
+  .card.front .info .position {
+    font-size: 14px;
+    margin: 3px 0;
+    color: blue;
+  }
 
-    .card.front .info .details {
-      text-align: left;
-      margin-top: 8px;
-      font-weight: bold;
-    }
+  .card.front .info .details {
+    text-align: left;
+    margin-top: 8px;
+    font-weight: bold;
+  }
 
-    .card.front .info .details div {
-      margin-bottom: 3px;
-    }
+  .card.front .info .details div {
+    margin-bottom: 3px;
+  }
 
-    .card.front .info .details strong {
-      display: inline-block;
-      width: 80px;
-    }
+  .card.front .info .details strong {
+    display: inline-block;
+    width: 80px;
+  }
 
-    .card.front .email {
-      position: absolute;
-      bottom: 0;
-      background: #3399ff;
-      color: white;
-      text-align: center;
-      width: 100%;
-      padding: 6px;
-      font-size: 13px;
-    }
+  .card.front .email {
+    position: absolute;
+    bottom: 0;
+    background: #3399ff;
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 6px;
+    font-size: 13px;
+  }
 
-    /* BACK SIDE */
-    .card.back .header {
-      background: #3399ff;
-      color: white;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      padding: 0 10px;
-    }
+  /* Back Side */
+  .card.back .header {
+    background: #3399ff;
+    color: white;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+  }
 
-    .card.back .header img.logo {
-      height: 75px;
-      margin-right: 20px;
-    }
+  .card.back .header img.logo {
+    height: 75px;
+    margin-right: 20px;
+  }
 
-    .card.back .header .company-text {
-      text-align: center;
-      flex: 1;
-    }
+  .card.back .header .company-text {
+    text-align: center;
+    flex: 1;
+  }
 
-    .card.back .header .company-text .cn {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 3px;
-    }
+  .card.back .header .company-text .cn {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
 
-    .card.back .header .company-text .en {
-      font-size: 13px;
-    }
+  .card.back .header .company-text .en {
+    font-size: 13px;
+  }
 
-    .card.back .content {
-      text-align: center;
-      padding: 15px 20px;
-    }
+  .card.back .content {
+    text-align: center;
+    padding: 15px 20px;
+  }
 
-    .card.back .address {
-      font-size: 13px;
-      margin-top: 5px;
-      font-weight: bold;
-    }
+  .card.back .address {
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: bold;
+  }
 
-    .card.back .qr {
-      margin-top: 40px;
-    }
+  .card.back .qr {
+    margin-top: 40px;
+  }
 
-    .card.back .qr img {
-      height: 110px;
-    }
+  .card.back .qr img {
+    height: 110px;
+  }
 
-    .card.back .signatures {
-      display: flex;
-      justify-content: space-between;
-      padding: 0 20px;
-      margin-top: 115px;
-      font-size: 12px;
-    }
+  .card.back .signatures {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 115px;
+    font-size: 12px;
+  }
 
-    .card.back .signatures div {
-      text-align: center;
-      width: 45%;
-    }
+  .card.back .signatures div {
+    text-align: center;
+    width: 45%;
+  }
 
-    .card.back .footer {
-      background: #3399ff;
-      height: 40px;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
+  .card.back .footer {
+    background: #3399ff;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+</style>
 </head>
 <body>
 
-  <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
+<button class="download-btn" onclick="downloadPDF()">Download PDF</button>
 
-  <div id="card-area">
-    <!-- FRONT PAGE -->
-    <div class="page">
-      <div class="card front">
-        <div class="header">
-          <img class="logo" src="company-logo.png" alt="Logo" />
-          <div class="company-name">
-            <div class="cn">中 国 中 铁 六 局 集 团 有 限 公 司</div>
-            <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
-          </div>
+<div id="card-area">
+  <!-- FRONT PAGE -->
+  <div class="page">
+    <div class="card front">
+      <div class="header">
+        <img class="logo" src="company-logo.png" alt="Logo" />
+        <div class="company-name">
+          <div class="cn">中 国 中 铁 六 局 集 团 有 限 公 司</div>
+          <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
         </div>
-
-        <div class="photo">
-          <img src="photo.jpg" alt="Photo" />
-        </div>
-
-        <div class="info">
-          <div class="name">MD OBAIDUL HASAN</div>
-          <div class="position">Wheel Loaders (Operator)</div>
-          <div class="details">
-            <div><strong>ID:</strong> 110-0027W-0407</div>
-            <div><strong>DOB:</strong> 10-11-2002</div>
-            <div><strong>Phone:</strong> 01832395343</div>
-            <div><strong>NID:</strong> 8712923831</div>
-            <div><strong>Blood:</strong> O+</div>
-            <div><strong>Join:</strong> 20-February-2020</div>
-          </div>
-        </div>
-
-        <div class="email">obaidulhasan381@gmail.com</div>
       </div>
-    </div>
 
-    <!-- BACK PAGE -->
-    <div class="page">
-      <div class="card back">
-        <div class="header">
-          <img class="logo" src="company-logo.png" alt="Logo" />
-          <div class="company-text">
-            <div class="cn">中 国 中 铁 六 局 集 团 有 限 公 司</div>
-            <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
-          </div>
-        </div>
-
-        <div class="content">
-          <div class="address">
-            Address:<br />
-            China Project, Polia, Bhanga,<br />
-            Faridpur, Dhaka, Bangladesh.
-          </div>
-
-          <div class="qr">
-            <img src="qrcode.png" alt="QR Code" />
-          </div>
-        </div>
-
-        <div class="signatures">
-          <div>
-            ___________<br />
-            <span>Authority Signature</span>
-          </div>
-          <div>
-            ___________<br />
-            <span>Operator Signature</span>
-          </div>
-        </div>
-
-        <div class="footer"></div>
+      <div class="photo">
+        <img src="photo.jpg" alt="Photo" />
       </div>
+
+      <div class="info">
+        <div class="name">MD OBAIDUL HASAN</div>
+        <div class="position">Wheel Loaders (Operator)</div>
+        <div class="details">
+          <div><strong>ID:</strong> 110-0027W-0407</div>
+          <div><strong>DOB:</strong> 10-11-2002</div>
+          <div><strong>Phone:</strong> 01832395343</div>
+          <div><strong>NID:</strong> 8712923831</div>
+          <div><strong>Blood:</strong> O+</div>
+          <div><strong>Join:</strong> 20-February-2020</div>
+        </div>
+      </div>
+
+      <div class="email">obaidulhasan381@gmail.com</div>
     </div>
   </div>
 
-  <script>
-    function downloadPDF() {
-      const element = document.getElementById('card-area');
-      document.querySelector(".download-btn").style.display = "none";
+  <!-- BACK PAGE -->
+  <div class="page">
+    <div class="card back">
+      <div class="header">
+        <img class="logo" src="company-logo.png" alt="Logo" />
+        <div class="company-text">
+          <div class="cn">中 国 中 铁 六 局 集 团 有 限 公 司</div>
+          <div class="en">CREC Padma Bridge Rail Link Project Division 3</div>
+        </div>
+      </div>
 
-      const opt = {
-        margin: 0,
-        filename: 'id-card.pdf',
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: {
-          scale: 3,
-          scrollX: 0,
-          scrollY: 0,
-          windowWidth: document.querySelector(".page").offsetWidth,
-          windowHeight: document.querySelector(".page").offsetHeight
-        },
-        jsPDF: {
-          unit: 'px',
-          format: [650, 842],
-          orientation: 'portrait',
-        }
-      };
+      <div class="content">
+        <div class="address">
+          Address:<br />
+          China Project, Polia, Bhanga,<br />
+          Faridpur, Dhaka, Bangladesh.
+        </div>
 
-      html2pdf().set(opt).from(element).save().then(() => {
-        document.querySelector(".download-btn").style.display = "block";
-      });
-    }
-  </script>
+        <div class="qr">
+          <img src="qrcode.png" alt="QR Code" />
+        </div>
+      </div>
+
+      <div class="signatures">
+        <div>
+          ___________<br />
+          <span>Authority Signature</span>
+        </div>
+        <div>
+          ___________<br />
+          <span>Operator Signature</span>
+        </div>
+      </div>
+
+      <div class="footer"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function downloadPDF() {
+  const element = document.getElementById('card-area');
+  document.querySelector(".download-btn").style.display = "none";
+
+  const opt = {
+    margin: [0, 0, 0, 0],
+    filename: 'id-card.pdf',
+    image: { type: 'jpeg', quality: 1 },
+    html2canvas: {
+      scale: 3,
+      scrollX: 0,
+      scrollY: 0
+    },
+    jsPDF: {
+      unit: 'px',
+      format: [650, 842],
+      orientation: 'portrait'
+    },
+    pagebreak: { mode: ['avoid', 'css', 'legacy'] }
+  };
+
+  html2pdf().set(opt).from(element).save().then(() => {
+    document.querySelector(".download-btn").style.display = "block";
+  });
+}
+</script>
 
 </body>
 </html>
