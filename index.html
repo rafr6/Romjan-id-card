@@ -250,12 +250,14 @@
     margin: 0 auto;
   }
 
+  /* **সিগনেচার আপডেট করা অংশ (ইনজেক্ট করা হয়েছে)** */
   .card.back .signatures {
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
-    margin-top: 100px;
+    margin-top: 130px; /* আগে 100px ছিল, নিচে নামানোর জন্য বাড়ানো হয়েছে */
     font-size: 12px;
+    align-items: flex-end; /* দুই সিগনেচারের লেভেল এক করার জন্য */
   }
 
   .card.back .signatures div {
@@ -263,13 +265,13 @@
     width: 45%;
   }
 
-  /* নতুন স্টাইল: পিএনজি ছবির জন্য */
+  /* নতুন স্টাইল: পিএনজি ছবির জন্য (টপ রিসেট করা হয়েছে) */
   .card.back .signatures img {
     max-width: 80px;
     height: auto;
     margin-bottom: 8px;
     position: relative;
-    top: -10px; /* উপরে উঠানোর জন্য */
+    top: 0; /* আগে -10px ছিল, এখন শূন্য করে লেভেল এক করা হয়েছে */
   }
 
   /* ছবির নিচে পাতলা বর্ডার */
